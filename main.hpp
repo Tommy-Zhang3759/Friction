@@ -39,6 +39,7 @@ public:
 
 class PressureControl {
 private:
+    double zeroPoint;
     double targetPressure;  // 目标压力
     double currentPressure; // 当前压力
     double kP, kI, kD;      // PID控制参数
@@ -50,7 +51,7 @@ public:
 
     void setTargetPressure(double pressure);
     double getTargetPressure() const;
-    void updatePressure(double pressure);
+    void _updatePressure(double pressure);
     double calculateAdjustment();
 };
 

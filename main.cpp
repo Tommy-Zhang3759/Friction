@@ -37,7 +37,7 @@ void PressureControl::setTargetPressure(double pressure) {
     targetPressure = pressure;
 }
 
-void PressureControl::updatePressure(double pressure) {
+void PressureControl::_updatePressure(double pressure) {
     currentPressure = pressure;
 }
 
@@ -56,8 +56,8 @@ Task::Task(Main_motor feed, Main_motor drill, PressureControl control)
 
 int Task::run() {
     // 更新压力传感器数据
-    double currentPressure = readPressure(); // 读取压力传感器数据
-    pressureControl.updatePressure(currentPressure);
+    double currentPressure = readPressure();
+    pressureControl._updatePressure(currentPressure);
 
     // 计算进钻速度调整
     double adjustment = pressureControl.calculateAdjustment();
